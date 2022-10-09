@@ -6,3 +6,9 @@ class Product(models.Model):
     content = models.TextField(blank=True,null=True)
     price = models.IntegerField()
 
+    @property
+    def sale_price(self):
+        return self.price + 10
+
+    def product_discount(self):
+        return self.price - 10

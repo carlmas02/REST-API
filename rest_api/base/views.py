@@ -1,7 +1,13 @@
 from django.http import JsonResponse
 import json
 from django.forms.models import model_to_dict
+
 from products.models import Product
+from products.serializers import *
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 
 def api_home_tradational(request):
     # collect request body
@@ -32,6 +38,13 @@ def api_models(request):
     #manual conversion -version 2
     if data :
         resp = model_to_dict(data)
-    
-
     return JsonResponse(resp)
+
+
+@api_view(["GET","POST"])
+def api_view(request):
+    instance = Product.objects.all()
+    if instance :
+        data = ProductSerializer(instance,many=True).data
+
+    return Response(data) # rest_framework funcN`
