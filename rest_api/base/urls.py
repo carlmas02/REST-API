@@ -5,5 +5,5 @@ from .views import *
 
 
 urlpatterns = [
-    path('',api_home)
+    path('',api_home_tradational)
 ]
