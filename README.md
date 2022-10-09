@@ -1,2 +1,2 @@
 # REST-API
-A precise implementation of REST API using DRF
+A precise implementation of a REST API using DRF
