@@ -5,5 +5,7 @@ from .views import *
 
 
 urlpatterns = [
-    path('',api_home_tradational)
-]
+    path('hey',api_home_tradational),
+    path('api_models',api_models)
+    
+]   

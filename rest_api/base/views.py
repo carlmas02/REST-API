@@ -1,6 +1,7 @@
-from django.shortcuts import render
 from django.http import JsonResponse
 import json
+from django.forms.models import model_to_dict
+from products.models import Product
 
 def api_home_tradational(request):
     # collect request body
@@ -16,3 +17,21 @@ def api_home_tradational(request):
     data['content_type'] = (request.content_type)
     print(data)
     return JsonResponse(data)
+
+
+def api_models(request):
+    data = Product.objects.all().first()
+    resp = {}
+
+    # #manual conversion -version 1
+    # if data :
+    #     resp['title'] = data.title
+    #     resp['content'] = data.content
+    #     resp['price'] = data.price
+
+    #manual conversion -version 2
+    if data :
+        resp = model_to_dict(data)
+    
+
+    return JsonResponse(resp)
